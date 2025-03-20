@@ -42,20 +42,46 @@
 <body>
     <h1>Benimle Evlenir Misin? ❤️</h1>
     <div class="container">
-        <button id="yes" onclick="playMusic()">Evet</button>
-        <button id="no" onmousedown="moveNoButton()" ontouchstart="moveNoButton()">Hayır</button>
+        <button id="yes">Evet</button>
+        <button id="no">Hayır</button>
     </div>
 
     <audio id="music" src="hakan-altun-teklif-ediyorum.mp3"></audio>
 
     <script>
         const noButton = document.getElementById("no");
+        const yesButton = document.getElementById("yes");
+        const music = document.getElementById("music");
 
         // Hayır butonunun kaçmasını sağla
         function moveNoButton(event) {
-            // Eğer mobilde "touchstart" varsa tıklama engellensin
+            // Mobilde tıklamayı engelle
             if (event.type === "touchstart") {
-                event.preventDefault(); // Tıklamayı engelle
+                event.preventDefault();
             }
 
-            const x = Math.ran
+            // Rasgele bir konum belirle
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+
+        // Evet butonuna tıklanınca şarkıyı 38. saniyeden başlat
+        function playMusic() {
+            music.currentTime = 38; // Şarkıyı 38. saniyeden başlat
+            music.play();
+            alert("Tebrikler! ❤️ Şimdi müziğin keyfini çıkar!");
+        }
+
+        // Hayır butonunun fareyle veya mobilde kaçmasını sağla
+        noButton.addEventListener("mouseover", moveNoButton);
+        noButton.addEventListener("touchstart", moveNoButton);
+
+        // Evet butonuna tıklandığında şarkıyı çal
+        yesButton.addEventListener("click", playMusic);
+        yesButton.addEventListener("touchstart", playMusic);  // Mobilde de çalışması için
+
+    </script>
+</body>
+</html>
