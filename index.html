@@ -56,7 +56,9 @@
         });
 
         function playMusic() {
-            document.getElementById("music").play();
+            const music = document.getElementById("music");
+            music.currentTime = 38; // Şarkıyı 38. saniyeden başlat
+            music.play();
             alert("Tebrikler! ❤️ Şimdi müziğin keyfini çıkar!");
         }
     </script>
