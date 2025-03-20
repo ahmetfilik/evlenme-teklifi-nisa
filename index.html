@@ -49,13 +49,14 @@
     <audio id="music" src="hakan-altun-teklif-ediyorum.mp3"></audio>
 
     <script>
+        // Butonları al
         const noButton = document.getElementById("no");
         const yesButton = document.getElementById("yes");
         const music = document.getElementById("music");
 
         // Hayır butonunun kaçmasını sağla
         function moveNoButton(event) {
-            // Mobilde tıklamayı engelle
+            // Eğer mobilde tıklamayı engelle
             if (event.type === "touchstart") {
                 event.preventDefault();
             }
@@ -74,11 +75,11 @@
             alert("Tebrikler! ❤️ Şimdi müziğin keyfini çıkar!");
         }
 
-        // Hayır butonunun fareyle veya mobilde kaçmasını sağla
+        // "Hayır" butonunun kaçmasını sağla (fare ve dokunmatik)
         noButton.addEventListener("mouseover", moveNoButton);
         noButton.addEventListener("touchstart", moveNoButton);
 
-        // Evet butonuna tıklandığında şarkıyı çal
+        // "Evet" butonuna tıklanınca müzik çalmaya başlasın
         yesButton.addEventListener("click", playMusic);
         yesButton.addEventListener("touchstart", playMusic);  // Mobilde de çalışması için
 
